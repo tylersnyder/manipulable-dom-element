@@ -8,9 +8,9 @@ Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, 
 ```
 import { dom as $ } from 'manipulatable-dom-element';
 
-$('body').addClass('hello-world');
-
-$('.className').on('click', function(event) {
+$('.className')
+  .addClass('hello-world')
+  .on('click', function(event) {
     event.preventDefault()
-});
+  });
 ```

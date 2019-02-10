@@ -1,6 +1,6 @@
 class ManipulatableDOMElement {
     constructor(selector) {
-        const matches = document.querySelectorAll(selector);
+        const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : [ selector ];
         this.elements = [ ...matches ];
     }
 

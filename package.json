@@ -1,0 +1,20 @@
+{
+    "name": "manipulatable-dom-element",
+    "version": "0.2.1",
+    "keywords": [ "dom", "manipulation", "html", "elements", "jQuery", "$" ],
+    "description": "A concise utility class for DOM Manipulation, with a jQuery-like API.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tylersnyder/manipulatable-dom-element.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tylersnyder/manipulatable-dom-element/issues"
+    },
+    "homepage": "https://github.com/tylersnyder/manipulatable-dom-element#readme"
+}

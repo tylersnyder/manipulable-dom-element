@@ -1,2 +1,4 @@
 # manipulatable-dom-element
-A concise utility class for DOM Manipulation, with a jQuery-like API.
+A utility class for DOM Manipulation. Focused on modern browsers, with a jQuery-like API.
+
+Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, `text`, `html`.

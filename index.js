@@ -1,4 +1,4 @@
-module.exports = class ManipulatableElement {
+module.exports = class ManipulatableDOMElement {
     constructor(selector) {
         const matches = document.querySelectorAll(selector);
         this.elements = [ ...matches ];

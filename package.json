@@ -1,6 +1,6 @@
 {
     "name": "manipulatable-dom-element",
-    "version": "0.2.1",
+    "version": "0.2.3",
     "keywords": [ "dom", "manipulation", "html", "elements", "jQuery", "$" ],
     "description": "A concise utility class for DOM Manipulation, with a jQuery-like API.",
     "main": "index.js",

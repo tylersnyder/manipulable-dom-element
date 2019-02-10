@@ -1,4 +1,4 @@
-module.exports = class ManipulatableDOMElement {
+class ManipulatableDOMElement {
     constructor(selector) {
         const matches = document.querySelectorAll(selector);
         this.elements = [ ...matches ];
@@ -55,4 +55,9 @@ module.exports = class ManipulatableDOMElement {
             el.innerHTML = content;
         });
     }
+}
+
+module.exports.default = ManipulatableDOMElement;
+module.exports.dom = function dom(selector) {
+    return new ManipulatableDOMElement(selector);
 };

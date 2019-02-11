@@ -3,6 +3,9 @@ A utility class and convienence wrapper for DOM manipulation. Focused on modern 
 
 Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, `text`, `html`.
 
+### Installation
+`npm install manipulable-dom-element`
+
 ### Using the `dom` export
  
 ```

@@ -1,4 +1,4 @@
-# manipulatable-dom-element
+# manipulable-dom-element
 A utility class and convienence wrapper for DOM Manipulation. Focused on modern browsers, with a jQuery-like API.
 
 Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, `text`, `html`.
@@ -6,7 +6,7 @@ Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, 
 ### Using the `dom` export
  
 ```
-import { dom as $ } from 'manipulatable-dom-element';
+import { dom as $ } from 'manipulable-dom-element';
 
 $('.className')
   .addClass('hello-world')

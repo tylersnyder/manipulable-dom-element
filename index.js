@@ -1,4 +1,4 @@
-class ManipulatableDOMElement {
+class ManipulableDOMElement {
     constructor(selector) {
         const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : [ selector ];
         this.elements = [ ...matches ];
@@ -74,7 +74,7 @@ class ManipulatableDOMElement {
     }
 }
 
-module.exports.default = ManipulatableDOMElement;
+module.exports.default = ManipulableDOMElement;
 module.exports.dom = function dom(selector) {
-    return new ManipulatableDOMElement(selector);
+    return new ManipulableDOMElement(selector);
 };

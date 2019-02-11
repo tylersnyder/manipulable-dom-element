@@ -4,7 +4,15 @@ A utility class and convienence wrapper for DOM manipulation. Focused on modern 
 Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, `text`, `html`.
 
 ### Installation
-`npm install manipulable-dom-element`
+Option 1. Install the module from npm for use with your desired build tool:
+```
+npm install manipulable-dom-element
+```
+
+Option 2. Drop the script tag in your page:
+```
+<script src="https://unpkg.com/manipulable-dom-element@0.5.5/dist/manipulable-dom-element-browser.js"></script>
+```
 
 ### Using the `dom` export
  

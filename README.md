@@ -4,7 +4,7 @@ A utility class and convienence wrapper for DOM manipulation. Focused on modern 
 Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, `text`, `html`.
 
 ### Why?
-jQuery's syntax is baked into my brain, but I hate loading such a large library. If you need support for older browsers or rely heavily on jQuery's extensive list of methods, this probably isn't right for you. If you need to do some basic DOM manipulation in modern browsers, give it a try.
+jQuery's syntax is baked into my brain, and it does provide a convenient layer of simplification over top of native browser APIs. However, I often avoid jQuery due to the large file size. If you need to do some basic DOM manipulation in modern browsers, give this a try. If you need support for older browsers or rely heavily on jQuery's extensive list of methods, this probably isn't right for you.
 
 ### Installation
 Option 1. Install the module from npm for use with your desired build tool:

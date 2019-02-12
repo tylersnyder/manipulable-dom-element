@@ -1,7 +1,7 @@
 # manipulable-dom-element
-1kb library for DOM manipulation in modern browsers, with an API similar to jQuery.
+1kb library for DOM manipulation in modern browsers, with a jQuery-like API.
 
-Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, `val`, `text`, `html`.
+Implements `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, `val`, `text`, `html`.
 
 ### Example
 ```
@@ -44,4 +44,4 @@ Web browsers have come a long way over the years. Modern browsers support a reas
 If you want to simplify the way you do basic DOM manipulation without bloat, give this a try. If you need support for older browsers or if you rely heavily on jQuery's extensive list of methods, this probably isn't right for you.
 
 #### TODO
-- Implement .find()
+- Implement `find`

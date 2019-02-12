@@ -72,6 +72,14 @@ class ManipulableDOMElement {
 
         return this;
     }
+
+    val(value) {
+        this.each(function(el) {
+            el.value = value;
+        });
+
+        return this;
+    }
 }
 
 module.exports.default = ManipulableDOMElement;

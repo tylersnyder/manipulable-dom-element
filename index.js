@@ -86,7 +86,6 @@ class ManipulableDOMElement {
     }
 }
 
-module.exports.default = ManipulableDOMElement;
-module.exports.dom = function dom(selector) {
+module.exports = function $(selector) {
     return new ManipulableDOMElement(selector);
 };

@@ -1,10 +1,17 @@
 <body>
-  <h1 id="headline"></h1>
-  <input id="textbox" name="textbox" type="text" />
+  <h1></h1>
+  <input id="input" name="textbox" type="text" />
 
-  <script src="../dist/manipulable-dom-element-browser.js"></script>
+  <script src="https://unpkg.com/manipulable-dom-element@0.6.0/dist/manipulable-dom-element-browser.min.js"></script>
   <script>
-    $('#headline').text('Hello world')
-    $('#textbox').val('I have a value!')
+    $('h1').text('Hello world');
+    $('#input').val('I have a value!');
+
+     // Chainable, too!
+    $('.className')
+      .addClass('hello-world')
+      .on('click', function(event) {
+        event.preventDefault()
+      });
   </script>
 </body>

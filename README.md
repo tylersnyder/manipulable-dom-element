@@ -1,10 +1,9 @@
 # manipulable-dom-element
 A utility class and convienence wrapper for DOM manipulation. Focused on modern browsers, with an API similar to jQuery, and a footprint  under 1KB.
 
-Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, `text`, `html`.
+Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, `val`, `text`, `html`.
 
 #### TODO
-- Implement .val()
 - Implement .find()
 
 ### Why?

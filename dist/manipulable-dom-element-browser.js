@@ -75,6 +75,10 @@
         }
 
         val(value) {
+            if (value == undefined) {
+                return this.elements[0].value;
+            }
+
             this.each(function(el) {
                 el.value = value;
             });

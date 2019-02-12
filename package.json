@@ -1,8 +1,8 @@
 {
     "name": "manipulable-dom-element",
-    "version": "0.7.1",
+    "version": "0.7.2",
     "keywords": [ "dom", "manipulation", "html", "elements", "jQuery", "$" ],
-    "description": "A concise utility class for DOM Manipulation, with a jQuery-like API.",
+    "description": "1kb library for DOM manipulation in modern browsers, with a jQuery-like API.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

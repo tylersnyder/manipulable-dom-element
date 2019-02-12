@@ -8,7 +8,8 @@ Implements `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`
   $('h1').text('Hello world');
   $('#input').val('I have a value!');
 
-   // Chainable, too!
+  // Chainable, too!
+  
   $('.className')
     .addClass('hello-world')
     .on('click', function(event) {

@@ -7,7 +7,11 @@ Includes `each`, `on`, `off`, `attr`, `addClass`, `removeClass`, `toggleClass`, 
 - Implement .find()
 
 ### Why?
-jQuery's syntax is baked into my brain, and it does provide a convenient layer of simplification over top of native browser APIs. However, I often avoid jQuery due to the large file size. If you need to do some basic DOM manipulation in modern browsers, give this a try. If you need support for older browsers or rely heavily on jQuery's extensive list of methods, this probably isn't right for you.
+Web browsers have come a long way since jQuery's inception. Modern browsers support a reasonably consistent set of APIs that are not difficult to work with. However, working with these native APIs can sometimes lead to verbose code, and it may be desirable to simplify the way you interact with these APIs.
+
+Many web developers have experience with jQuery, whether good or bad. After filling codebases with`$(things)` for years, jQuery's syntax and APIs are baked into my brain.
+
+If you want to simplify the way you do basic DOM manipulation without bloat, give this a try. If you need support for older browsers or if you rely heavily on jQuery's extensive list of methods, this probably isn't right for you.
 
 ### Installation
 Option 1. Install the module from npm for use with your desired build tool:

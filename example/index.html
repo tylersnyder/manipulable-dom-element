@@ -1,11 +1,38 @@
-<body>
-  <h1></h1>
-  <input id="input" name="textbox" type="text" />
 
-  <script src="https://unpkg.com/manipulable-dom-element@0.7.2/dist/manipulable-dom-element-browser.min.js"></script>
+<style>
+  body {
+    margin: 20px auto;
+    background: #030303;
+    color: #fefefe;
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  input {
+    padding: 10px 15px;
+    border: 1px solid #c3c3c3;
+    background: #131313;
+    color: #fefefe;
+    font-size: 18px;
+  }
+</style>
+<body>
+  <main>
+    <article>
+      <h1></h1>
+      <aside>
+          <input id="input" name="textbox" type="text" />
+      </aside>
+    </article>
+  </main>
+
+  <!-- <script src="https://unpkg.com/manipulable-dom-element@0.7.2/dist/manipulable-dom-element-browser.min.js"></script> -->
+  <script src="../dist/manipulable-dom-element-browser.js"></script>
   <script>
-    $('h1').text('Hello world');
-    $('#input').val('I have a value!');
+    $(document.querySelectorAll('h1')).text('bob')
+    $('body').find('input[type="text"]').val('I have a value!');
 
      // Chainable, too!
     $('.className')

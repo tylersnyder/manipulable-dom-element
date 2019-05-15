@@ -1,157 +1,183 @@
 class ManipulableDOMElement {
-    constructor(selector) {
-        if (selector instanceof HTMLElement) {
-            this.elements = [ selector ];
-        } else if (NodeList.prototype.isPrototypeOf(selector)) {
-            this.elements = [ ...selector ];
-        } else if (Array.isArray(selector)) {
-            this.elements = [
-                ...selector
-                    .map((s) => {
-                        if (typeof s === 'string') return document.querySelectorAll(s);
-                        else if (NodeList.prototype.isPrototypeOf(s)) return [ ...s ].flat();
-                        return s;
-                    })
-                    .flat()
-            ];
-        } else {
-            this.elements = [ ...document.querySelectorAll(selector) ];
+  constructor (selector) {
+    this.elements = this.query(selector);
+  }
+
+  query (selector) {
+    if (selector instanceof HTMLElement) {
+      return [ selector ];
+    } else if (NodeList.prototype.isPrototypeOf(selector)) {
+      return [ ...selector ];
+    } else if (Array.isArray(selector)) {
+      return [ ...selector.map(this.mapSelectors).flat() ];
+    } else {
+      return [ ...document.querySelectorAll(selector) ];
+    }
+  }
+
+  mapSelectors (selector) {
+    if (typeof selector === "string") {
+      return document.querySelectorAll(selector);
+    } else if (NodeList.prototype.isPrototypeOf(selector)) {
+      return [ ...selector ].flat();
+    }
+
+    return selector;
+  }
+
+  get length () {
+    return (this.elements || []).length;
+  }
+
+  each (fn) {
+    this.elements.map(fn);
+    return this;
+  }
+
+  on (type, callback) {
+    this.each(function (el) {
+      el.addEventListener(type, callback);
+    });
+
+    return this;
+  }
+
+  off (type, callback = () => {}) {
+    this.each(function (el) {
+      el.removeEventListener(type, callback);
+    });
+
+    return this;
+  }
+
+  attr (key, value) {
+    if (value == undefined) {
+      return this.elements[0].getAttribute(key);
+    }
+
+    this.each(function (el) {
+      el.setAttribute(key, value);
+    });
+
+    return this;
+  }
+
+  data (key, value) {
+    return this.attr("data-" + key, value);
+  }
+
+  addClass (className) {
+    this.each(function (el) {
+      el.classList.add(className);
+    });
+
+    return this;
+  }
+
+  removeClass (className) {
+    this.each(function (el) {
+      el.classList.remove(className);
+    });
+
+    return this;
+  }
+
+  toggleClass (className) {
+    this.each(function (el) {
+      el.classList.toggle(className);
+    });
+
+    return this;
+  }
+
+  text (content) {
+    this.each(function (el) {
+      el.textContent = content;
+    });
+
+    return this;
+  }
+
+  html (content) {
+    this.each(function (el) {
+      el.innerHTML = content;
+    });
+
+    return this;
+  }
+
+  val (value) {
+    if (value == undefined) {
+      return this.elements[0].value;
+    }
+
+    this.each(function (el) {
+      el.value = value;
+    });
+
+    return this;
+  }
+
+  parents (selector) {
+    var matches = [];
+
+    this.each(function (el) {
+      while ((el = el.parentElement) !== null) {
+        if (el.nodeType !== Node.ELEMENT_NODE) {
+          continue;
         }
-    }
 
-    get length() {
-        return (this.elements || []).length;
-    }
-
-    each(fn) {
-        this.elements.map(fn);
-        return this;
-    }
-
-    on(type, callback) {
-        this.each(function(el) {
-            el.addEventListener(type, callback);
-        });
-
-        return this;
-    }
-
-    off(type, callback = () => {}) {
-        this.each(function(el) {
-            el.removeEventListener(type, callback);
-        });
-
-        return this;
-    }
-
-    attr(key, value) {
-        if (value == undefined) {
-            return this.elements[0].getAttribute(key);
+        if (!selector || el.matches(selector)) {
+          matches.push(el);
         }
+      }
+    });
 
-        this.each(function(el) {
-            el.setAttribute(key, value);
-        });
+    return new ManipulableDOMElement(matches);
 
-        return this;
-    }
+    // this.each(function (el) {
+    //   while ((el = el.parentNode) && el.nodeType !== 9) {
+    //     if (el.nodeType === 1) {
+    //       if (!selector) {
+    //         matches.push(el);
+    //       } else if (el === selector) {
+    //         matches.push(el);
+    //         break;
+    //       } else if (
+    //         (typeof selector === "string" && el.nodeName.toLowerCase() === selector.toLowerCase()) ||
+    //         "." + el.className.toLowerCase() === selector.toLowerCase() ||
+    //         el.id.toLowerCase() === selector.toLowerCase()
+    //       ) {
+    //         matches.push(el);
+    //         break;
+    //       }
+    //     }
+    //   }
+    // });
 
-    data(key, value) {
-        return this.attr('data-' + key, value);
-    }
+    // return new ManipulableDOMElement(matches);
+  }
 
-    addClass(className) {
-        this.each(function(el) {
-            el.classList.add(className);
-        });
+  find (selector) {
+    var matches = [];
 
-        return this;
-    }
+    this.each((el) => {
+      var elements = el.querySelectorAll(selector);
+      if (elements && elements.length > 0) {
+        matches.push(elements);
+      }
+    });
 
-    removeClass(className) {
-        this.each(function(el) {
-            el.classList.remove(className);
-        });
+    return new ManipulableDOMElement(matches.flat());
+  }
 
-        return this;
-    }
-
-    toggleClass(className) {
-        this.each(function(el) {
-            el.classList.toggle(className);
-        });
-
-        return this;
-    }
-
-    text(content) {
-        this.each(function(el) {
-            el.textContent = content;
-        });
-
-        return this;
-    }
-
-    html(content) {
-        this.each(function(el) {
-            el.innerHTML = content;
-        });
-
-        return this;
-    }
-
-    val(value) {
-        if (value == undefined) {
-            return this.elements[0].value;
-        }
-
-        this.each(function(el) {
-            el.value = value;
-        });
-
-        return this;
-    }
-
-    parents(target) {
-        var matches = [];
-
-        this.each(function(el) {
-            while ((el = el.parentNode) && el.nodeType !== 9) {
-                if (el.nodeType === 1) {
-                    if (!target) {
-                        matches.push(el);
-                    } else if (el === target) {
-                        matches.push(el);
-                        break;
-                    } else if (
-                        (typeof target === 'string' && el.nodeName.toLowerCase() === target.toLowerCase()) ||
-                        '.' + el.className.toLowerCase() === target.toLowerCase() ||
-                        el.id.toLowerCase() === target.toLowerCase()
-                    ) {
-                        matches.push(el);
-                        break;
-                    }
-                }
-            }
-        });
-
-        return new ManipulableDOMElement(matches);
-    }
-
-    find(selector) {
-        var matches = [];
-
-        this.each((el) => {
-            var elements = el.querySelectorAll(selector);
-            if (elements && elements.length > 0) {
-                matches.push(elements);
-            }
-        });
-
-        return new ManipulableDOMElement(matches.flat());
-    }
+  remove () {
+    this.each(function (el) {
+      el.parentNode.removeChild(el);
+    });
+  }
 }
 
-module.exports = function $(selector) {
-    return new ManipulableDOMElement(selector);
+module.exports = function $ (selector) {
+  return new ManipulableDOMElement(selector);
 };

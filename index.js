@@ -42,13 +42,15 @@ class ManipulableDOMElement {
     return this;
   }
 
-  off (type, callback = () => {}) {
+  off (type, callback = this.noop) {
     this.each(function (el) {
       el.removeEventListener(type, callback);
     });
 
     return this;
   }
+
+  noop () {}
 
   attr (key, value) {
     if (value == undefined) {
@@ -134,34 +136,12 @@ class ManipulableDOMElement {
     });
 
     return new ManipulableDOMElement(matches);
-
-    // this.each(function (el) {
-    //   while ((el = el.parentNode) && el.nodeType !== 9) {
-    //     if (el.nodeType === 1) {
-    //       if (!selector) {
-    //         matches.push(el);
-    //       } else if (el === selector) {
-    //         matches.push(el);
-    //         break;
-    //       } else if (
-    //         (typeof selector === "string" && el.nodeName.toLowerCase() === selector.toLowerCase()) ||
-    //         "." + el.className.toLowerCase() === selector.toLowerCase() ||
-    //         el.id.toLowerCase() === selector.toLowerCase()
-    //       ) {
-    //         matches.push(el);
-    //         break;
-    //       }
-    //     }
-    //   }
-    // });
-
-    // return new ManipulableDOMElement(matches);
   }
 
   find (selector) {
     var matches = [];
 
-    this.each((el) => {
+    this.each(function (el) {
       var elements = el.querySelectorAll(selector);
       if (elements && elements.length > 0) {
         matches.push(elements);

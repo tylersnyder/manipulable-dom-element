@@ -1,13 +1,20 @@
 {
   "name": "manipulable-dom-element",
-  "version": "0.7.3",
-  "keywords": [ "dom", "manipulation", "html", "elements", "jQuery", "$" ],
+  "version": "0.8.0",
+  "keywords": [
+    "dom",
+    "manipulation",
+    "html",
+    "elements",
+    "jQuery",
+    "$"
+  ],
   "description": "1kb library for DOM manipulation in modern browsers, with a jQuery-like API.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx watchify index.js -s $ -o dist/manipulable-dom-element-browser.js",
-    "build": "npx browserify index.js -s $ > dist/manipulable-dom-element-browser.js && npx browserify -p tinyify index.js -s $ > dist/manipulable-dom-element-browser.min.js"
+    "dev": "npx watchify -p esmify index.mjs -s $ -o dist/manipulable-dom-element-browser.js",
+    "build": "npx browserify -p esmify index.mjs -s $ > dist/manipulable-dom-element-browser.js && npx browserify -p tinyify index.mjs -s $ > dist/manipulable-dom-element-browser.min.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +27,9 @@
   },
   "homepage": "https://github.com/tylersnyder/manipulable-dom-element#readme",
   "devDependencies": {
+    "browser-resolve": "^1.11.3",
     "browserify": "^16.2.3",
+    "esmify": "^2.1.1",
     "tinyify": "^2.5.0",
     "uglify-js": "^3.4.9",
     "watchify": "^3.11.0"

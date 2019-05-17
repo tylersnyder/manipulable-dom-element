@@ -1,4 +1,4 @@
-class ManipulableDOMElement {
+module.exports = class ManipulableDOMElement {
   constructor (selector) {
     this.elements = this.query(selector);
   }
@@ -156,8 +156,4 @@ class ManipulableDOMElement {
       el.parentNode.removeChild(el);
     });
   }
-}
-
-module.exports = function $ (selector) {
-  return new ManipulableDOMElement(selector);
 };

@@ -27,7 +27,7 @@ npm install manipulable-dom-element
 ##### Option 2. CDN
 Add the script tag directly to your page:
 ```
-<script src="https://unpkg.com/manipulable-dom-element@0.7.3/dist/manipulable-dom-element-browser.js"></script>
+<script src="https://unpkg.com/manipulable-dom-element@0.8.0/dist/manipulable-dom-element-browser.js"></script>
 ```
 
 #### node.js: Using the `dom` export
